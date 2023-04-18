@@ -22,7 +22,7 @@ export default function CapitalCode() {
         list = bearCode.split(',')
       }
       list = list.filter(item => item.length >= 4)
-      await fetch(`${process.env.API_BASE_URL}/stock/updateCode`, {
+      const result = await fetch(`${process.env.API_BASE_URL}/stock/updateCode`, {
         method: 'POST',
         body: JSON.stringify({
           codeArr: list,
@@ -32,6 +32,11 @@ export default function CapitalCode() {
           'Content-Type': 'application/json'
         }
       })
+      if(result.status === 200){
+        alert('修改成功')
+        setBullCode('')
+        setBearCode('')
+      }
     } catch (error) {
       console.error(error.message)
     }
@@ -82,7 +87,7 @@ export default function CapitalCode() {
         </button>
 
         {/* 更新空方 */}
-        <div className="relative flex h-10 w-full flex-row-reverse overflow-clip rounded-lg mt-4">
+        <div className="hidden relative flex h-10 w-full flex-row-reverse overflow-clip rounded-lg mt-4">
           <input
             value={bearCode}
             onChange={handleBearInputChange}
@@ -99,7 +104,7 @@ export default function CapitalCode() {
             空
           </label>
         </div>
-        <button onClick={() => updateCode('bear')} className="group self-end mt-2 rounded-2xl h-10 lg:w-1/5 sm:w-full md:w-full bg-green-500 font-bold text-lg text-white overflow-hidden">
+        <button onClick={() => updateCode('bear')} className="hidden group self-end mt-2 rounded-2xl h-10 lg:w-1/5 sm:w-full md:w-full bg-green-500 font-bold text-lg text-white overflow-hidden">
           更新空方!
           <div className="absolute duration-300 inset-0 w-full h-full transition-all scale-0 group-hover:scale-100 group-hover:bg-white/30 rounded-2xl"></div>
         </button>
