@@ -8,6 +8,7 @@
 // }
 
 // module.exports = nextConfig
+require('dotenv').config();
 const withPlugins = require("next-compose-plugins");
 const images = require("next-images");
 const nextConfig = withPlugins([[images, {}]], {
@@ -16,7 +17,7 @@ const nextConfig = withPlugins([[images, {}]], {
     return config;
   },
   env: {
-    API_BASE_URL: 'http://localhost:8000',
+    API_BASE_URL: process.env.API_URL,
   },
 });
 
