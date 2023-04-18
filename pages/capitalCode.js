@@ -22,7 +22,7 @@ export default function CapitalCode() {
         list = bearCode.split(',')
       }
       list = list.filter(item => item.length >= 4)
-      const result = await fetch(`${process.env.API_BASE_URL}/stock/updateCode`, {
+      const result = await fetch(`${process.env.API_BASE_URL}stock/updateCode`, {
         method: 'POST',
         body: JSON.stringify({
           codeArr: list,
@@ -44,7 +44,7 @@ export default function CapitalCode() {
   };
   const startFunc = async () => {
     try {
-      await fetch(`${process.env.API_BASE_URL}/stock/burstStart`, {
+      await fetch(`${process.env.API_BASE_URL}stock/burstStart`, {
         method: 'POST'
       })
     } catch (error) {
@@ -53,7 +53,7 @@ export default function CapitalCode() {
   }
   const endFunc = async () => {
     try {
-      await fetch(`${process.env.API_BASE_URL}/stock/burstStop`, {
+      await fetch(`${process.env.API_BASE_URL}stock/burstStop`, {
         method: 'POST'
       })
     } catch (error) {
