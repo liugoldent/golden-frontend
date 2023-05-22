@@ -12,8 +12,6 @@ export default function CapitalCode() {
       setDbBearCode(await fetchCodeList('bear'))
     }
     initFunc()
-    // fetchCodeList('bull')
-    //   fetchCodeList('bear')
     // 清除副作用函式
     return () => {
       // 在組件卸載時執行的清除函式
